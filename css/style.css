@@ -178,3 +178,67 @@ footer{margin-top:clamp(56px,8vw,100px);background:var(--b);color:rgba(255,255,2
 footer a{color:#fff;border-bottom-color:#47d567}
 footer a:hover{color:#7ef09b;border-color:#7ef09b}
 @media (max-width:759px){.logo{width:clamp(120px,34vw,150px)}.notify{margin:0 10px}}
+
+/* ===== v2: Gen Z refresh — new fonts, softer opacity, lighter gradients ===== */
+:root{--mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;--disp:"Bricolage Grotesque","DM Sans",system-ui,sans-serif}
+body{font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.tag,button{font-family:var(--disp)}
+h1,h2{font-weight:800;letter-spacing:-.04em}
+.chips span,.pill,.eyebrow,.mq span,#msg,.vf{letter-spacing:.04em}
+.pill{letter-spacing:.14em}
+
+/* lower opacity: floating gear, grid, grain, vignette, viewfinder */
+.eq{color:rgba(47,50,144,.16)}
+.eq:nth-child(3n+2){color:rgba(32,150,60,.24)}
+.eq:nth-child(3n){color:rgba(86,92,200,.2)}
+body::before{opacity:.03}
+body::after{background:radial-gradient(ellipse at center,transparent 60%,rgba(47,50,144,.04) 100%)}
+.hero::before{background:linear-gradient(90deg,transparent calc(33.33% - .5px),rgba(47,50,144,.035) 33.33%,transparent calc(33.33% + .5px),transparent calc(66.66% - .5px),rgba(47,50,144,.035) 66.66%,transparent calc(66.66% + .5px)),linear-gradient(0deg,transparent calc(33.33% - .5px),rgba(47,50,144,.035) 33.33%,transparent calc(33.33% + .5px),transparent calc(66.66% - .5px),rgba(47,50,144,.035) 66.66%,transparent calc(66.66% + .5px))}
+.vf{opacity:.6}
+.vf i{border-color:rgba(47,50,144,.5)}
+.xh{opacity:.22}
+
+/* lighter gradients */
+.hero{background:radial-gradient(ellipse 55% 50% at 12% 18%,rgba(47,50,144,.07),transparent 70%),radial-gradient(ellipse 50% 45% at 90% 88%,rgba(46,171,71,.09),transparent 70%),radial-gradient(ellipse 70% 55% at 50% 45%,#f1f3fe 0,var(--bk) 75%)}
+.hero .spot{background:radial-gradient(420px circle at var(--sx,50%) var(--sy,50%),rgba(46,171,71,.07),rgba(47,50,144,.04) 40%,transparent 70%)}
+.card{background:linear-gradient(180deg,#fff,rgba(255,255,255,.8))}
+.card:hover{background:linear-gradient(180deg,rgba(46,171,71,.04),#fff)}
+.card .glow{background:radial-gradient(220px circle at var(--cx,50%) var(--cy,50%),rgba(46,171,71,.08),transparent 70%)}
+.notify{background:radial-gradient(ellipse at 85% 110%,rgba(46,171,71,.22),transparent 60%),linear-gradient(135deg,#2f3290,#2a2e85 65%,#26397a)}
+.ic{background:rgba(47,50,144,.05)}.card:nth-child(even) .ic{background:rgba(46,171,71,.06)}
+
+/* Gen Z shapes: round, sticker-y, soft pop shadows */
+.pill{border-radius:999px;padding:9px 18px;transform:rotate(-2deg)}
+.pill:hover{transform:rotate(1deg) translateY(-2px)}
+.chips span{border-radius:999px;padding:8px 15px;font-size:.82rem;font-weight:500;background:#fff}
+.chips span:nth-child(odd){transform:rotate(-2deg)}.chips span:nth-child(even){transform:rotate(2deg)}
+.card{border-radius:24px;border-top-width:1px;box-shadow:0 6px 0 -1px rgba(47,50,144,.10)}
+.card:nth-child(even){border-top-color:var(--ln)}
+.card::before,.card::after{display:none}
+.ic{border-radius:18px}
+.card:hover{box-shadow:0 14px 0 -2px rgba(47,50,144,.12)}
+.mq{border-radius:0}
+.mq span{font-weight:500}
+.notify{border-radius:36px;margin:0 clamp(10px,2vw,24px)}
+input[type=email]{border-radius:999px;padding:16px 24px}
+button{border-radius:999px;padding:16px 30px;box-shadow:0 5px 0 #1b7a30;color:#fff}
+button:hover{box-shadow:0 8px 0 #1b7a30;background:#34b84f}
+button:active{transform:translateY(3px);box-shadow:0 2px 0 #1b7a30}
+.skip{border-radius:999px}
+@media (hover:none){.chips span:nth-child(odd){transform:rotate(-2deg)}.chips span:nth-child(even){transform:rotate(2deg)}.pill:hover{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.pill:hover,button:hover{transform:none}}
+
+/* ===== v2.1: alignment fixes ===== */
+/* straighten the tilted pill + chips so they sit on one line */
+.pill,.pill:hover{transform:none}
+.chips{align-items:center}
+.chips span,.chips span:nth-child(odd),.chips span:nth-child(even){transform:none;line-height:1.2}
+.chips span:hover,.chips span:nth-child(even):hover{transform:translateY(-3px)}
+/* headings & copy: balanced wrapping, no orphans like "wave." / "the drop." */
+h1,h2,h3{text-wrap:balance}
+h2{max-width:24ch}
+.lead,.sub,.card p{text-wrap:pretty}
+.lead{max-width:60ch}
+.notify h2{max-width:20ch}
+@media (max-width:759px){h2{max-width:none}}
+@media (hover:none){.pill:hover,.chips span:hover,.chips span:nth-child(even):hover{transform:none}}
